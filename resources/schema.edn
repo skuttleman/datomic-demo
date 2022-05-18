@@ -1,0 +1,54 @@
+({:db/ident :warrior/id
+  :db/valueType :db.type/uuid
+  :db/unique :db.unique/identity
+  :db/cardinality :db.cardinality/one
+  :db/doc "The warrior's unique identifier"}
+ {:db/ident :warrior/name
+  :db/valueType :db.type/string
+  :db/cardinality :db.cardinality/one
+  :db/doc "The warrior's name"}
+ {:db/ident :warrior/weapon
+  :db/valueType :db.type/ref
+  :db/cardinality :db.cardinality/one
+  :db/isComponent true
+  :db/doc "The warrior's weapon"}
+ {:db/ident :warrior/allergies
+  :db/valueType :db.type/keyword
+  :db/cardinality :db.cardinality/many
+  :db/doc "Any allergies from which the warrior suffers. Catering: please take note."}
+ {:db/ident :warrior/emergency-contacts
+  :db/valueType :db.type/ref
+  :db/cardinality :db.cardinality/many
+  :db/doc "The warrior's contact in case of injury or emergency"}
+ {:db/ident :warrior/allies
+  :db/valueType :db.type/ref
+  :db/cardinality :db.cardinality/many
+  :db/doc "The warrior's allied warriors"}
+
+ {:db/ident :weapon/type
+  :db/valueType :db.type/keyword
+  :db/cardinality :db.cardinality/one
+  :db/doc "The type of weapon"}
+ {:db/ident :weapon/damage
+  :db/cardinality :db.cardinality/one
+  :db/valueType :db.type/long
+  :db/doc "The amount of damage the weapon does"}
+
+ {:db/ident :emergency-contact/id
+  :db/valueType :db.type/uuid
+  :db/unique :db.unique/identity
+  :db/cardinality :db.cardinality/one
+  :db/doc "The emergency contact's unique id"}
+ {:db/ident :emergency-contact/name
+  :db/valueType :db.type/string
+  :db/cardinality :db.cardinality/one
+  :db/doc "The emergency contact's full name"}
+ {:db/ident :emergency-contact/email
+  :db/valueType :db.type/string
+  :db/unique :db.unique/value
+  :db/cardinality :db.cardinality/one
+  :db/doc "The emergency contact's email address"}
+ {:db/ident :emergency-contact/phone
+  :db/cardinality :db.cardinality/one
+  :db/valueType :db.type/string
+  :db/doc "The emergency contact's phone number"})

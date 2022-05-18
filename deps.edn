@@ -1,0 +1,4 @@
+{:paths ["src" "resources"]
+ :deps {com.datomic/client-pro {:mvn/version "1.0.75"}
+        danlentz/clj-uuid {:mvn/version "0.1.9"}
+        org.clojure/clojure {:mvn/version "1.11.1"}}}

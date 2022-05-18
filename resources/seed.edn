@@ -1,0 +1,54 @@
+({:warrior/id #uuid "033e1eb3-3793-4342-beef-d2fb6604c188"
+  :warrior/name "Popeye"
+  :warrior/weapon {:weapon/type :weapon-type/FISH_HOOKS
+                   :weapon/damage 175}
+  :warrior/emergency-contacts #{{:emergency-contact/id #uuid "033e1eb3-4b6a-4fa1-a2bc-5ccfacbe4725"
+                                 :emergency-contact/name "Olive Oil"}}}
+ {:warrior/id #uuid "033e1d87-f2a7-453a-b4ca-2eb3ebb4e522"
+  :warrior/name "Balki Bartokomous"
+  :warrior/allergies #{:PEANUTS}
+  :warrior/emergency-contacts #{{:emergency-contact/id #uuid "033e1d87-129b-4a27-9640-ab275bb83331"
+                                 :emergency-contact/name "Cousin Larry"
+                                 :emergency-contact/email "lappleton88@aol.com"}
+                                {:emergency-contact/id #uuid "033e1d87-9e68-4a93-8aa2-dfe39b6263ba"
+                                 :emergency-contact/name "Mary Anne"
+                                 :emergency-contact/email "2125550471"}}}
+ {:db/id "leonardo"
+  :warrior/id #uuid "033e1d87-68df-4751-bbe2-35b81071a3b8"
+  :warrior/name "Leonardo"
+  :warrior/weapon {:weapon/type :weapon-type/SWORD
+                   :weapon/damage 300}
+  :warrior/emergency-contacts #{{:db/id "splinter"
+                                 :emergency-contact/id #uuid "033e1d87-d565-4ec0-bb1e-1bcb3213bcf9"
+                                 :emergency-contact/name "Splinter"
+                                 :emergency-contact/email "anthropomorphic-rat@yahoo.com"}
+                                {:db/id "april"
+                                 :emergency-contact/id #uuid "033e1d87-1cec-4114-8547-1bed4b80b161"
+                                 :emergency-contact/name "April O'Neil"
+                                 :emergency-contact/email "april.oneil@channel6.news"
+                                 :emergency-contact/phone "2125554747"}}
+  :warrior/allies #{"raphael" "donatello" "michelangelo"}}
+ {:db/id "raphael"
+  :warrior/id #uuid "033e1d87-40da-4b9f-979d-ad698a1127f0"
+  :warrior/name "Raphael"
+  :warrior/weapon {:weapon/type :weapon-type/SAI
+                   :weapon/damage 100}
+  :warrior/allergies #{:SPINACH :PEANUTS}
+  :warrior/emergency-contacts #{"splinter" "april"}
+  :warrior/allies #{"leonardo" "donatello" "michelangelo"}}
+ {:db/id "donatello"
+  :warrior/id #uuid "033e1d87-7984-4e95-b4bf-069d19d4e497"
+  :warrior/name "Donatello"
+  :warrior/weapon {:weapon/type :weapon-type/BO_STAFF
+                   :weapon/damage 250}
+  :warrior/allergies #{:PEANUTS}
+  :warrior/emergency-contacts #{"splinter" "april"}
+  :warrior/allies #{"leonardo" "raphael" "michelangelo"}}
+ {:db/id "michelangelo"
+  :warrior/id #uuid "033e1d87-d3d3-4b75-92f3-b2ca60428174"
+  :warrior/name "Michelangelo"
+  :warrior/allergies #{:SHELLFISH}
+  :warrior/weapon {:weapon/type :weapon-type/NUNCHUCKS
+                   :weapon/damage 200}
+  :warrior/emergency-contacts #{"splinter" "april"}
+  :warrior/allies #{"leonardo" "raphael" "donatello"}})
