@@ -9,7 +9,7 @@ transactor and peer server that you can connect to.
 - [get a datomic starter license](https://www.datomic.com/get-datomic.html)
 - [datomic local dev setup](https://docs.datomic.com/on-prem/getting-started/dev-setup.html)
 
-Make sure you follow the steps for connecting the `client` library to a `peer server`,
+Make sure you follow the steps for connecting the `client library` to a `peer server`,
 **not** the `peer library`.
 
 The code in this repo connects to a local peer server. If you want to experiment
