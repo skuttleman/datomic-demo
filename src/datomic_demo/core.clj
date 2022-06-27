@@ -7,15 +7,15 @@
 (def ^:private conn
   (data/connect "demo"))
 
+(data/load-edn! conn "schema.edn")
+
+(data/load-edn! conn "seed.edn")
+
 (defn ^:private reduce-pairs [pairs]
   (reduce (fn [m [k v]]
             (update m k (fnil conj #{}) v))
           {}
           pairs))
-
-(data/load-edn! conn "schema.edn")
-
-(data/load-edn! conn "seed.edn")
 
 (comment
   ;; *** QUERIES ***
@@ -32,6 +32,13 @@
                        [?e :warrior/name ?name]
                        [?e :warrior/allergies ?allergy]]
                      (d/db conn)))
+
+  ;; all warriors with no allergies
+  (d/q '[:find ?name
+         :where
+         [?e :warrior/name ?name]
+         (not [?e :warrior/allergies])]
+       (d/db conn))
 
 
   ;; all warriors _with_ PEANUTS allergy
@@ -56,7 +63,9 @@
                        :where
                        [?e :warrior/name ?name]
                        [?e :warrior/allies ?a]
-                       [?a :warrior/name ?ally]]
+                       [?a :warrior/name ?ally]
+                       (not [?e :warrior/allergies :PEANUTS])
+                       [?a :warrior/allergies :PEANUTS]]
                      (d/db conn)))
 
 
@@ -144,6 +153,7 @@
 (comment
   ;; history
   (def chuck-id (uuid/squuid))
+
   (do (d/transact conn {:tx-data [[:db/add "contact" :emergency-contact/id chuck-id]
                                   [:db/add "contact" :emergency-contact/name "Charles VII"]
                                   [:db/add [:warrior/id joa-id] :warrior/emergency-contacts "contact"]]})
@@ -186,7 +196,7 @@
 
 
   ;; as of / since
-  (def dt)
+  (def dt (java.util.Date.))
   (d/q '[:find ?name ?email
          :in $ ?id
          :where
@@ -221,7 +231,8 @@
               :where
               [$all ?e :warrior/id]
               [(get-else $old ?e :warrior/name :MISSING) ?old-name]
-              [(get-else $new ?e :warrior/name :MISSING) ?new-name]]
+              [(get-else $new ?e :warrior/name :MISSING) ?new-name]
+              [(not= ?old-name ?new-name)]]
             (d/db conn)
             (d/as-of (d/db conn) dt)
             (d/since (d/db conn) dt))
